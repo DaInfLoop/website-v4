@@ -1,0 +1,62 @@
+@import url(https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css);
+
+html {
+    background-color: rgb(216, 191, 216);
+    font-family: serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 48px;
+    gap: 16px;
+}
+
+.left-right {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+body * * {
+    margin: 0;
+}
+
+img {
+    width: 64px;
+    height: auto;
+}
+
+.lastfm-cover {
+    width: 96px;
+    height: auto;
+}
+
+div:not(.left-right) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+a {
+    color: blue
+}
+
+hr {
+    border-color: gray;
+    width: 100%;
+}
+
+footer {
+    position: fixed;
+    bottom: 48px;
+}
+
+.break-line {
+    white-space: pre-line;
+}
+
+.monospace {
+    font-family: Hack;
+}

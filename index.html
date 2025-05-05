@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>dainfloop</title>
+    <link href="./style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="left-right" id="hi">
+        <h1>hi!</h1>
+        <img src="https://rana.transfemme.dev/static/pfps/maidrana.png"
+            alt="our &quot;collective&quot; profile picture: namely rana in a maid outfit."
+            title="our &quot;collective&quot; profile picture: namely rana in a maid outfit." />
+    </div>
+    <div>
+        <h2>about us</h2>
+        <p>hi! nice to meet you. we go by dainfloop, or loop for short.</p>
+        <p>we're a plural system of 6 headmates. learn more about each of us on our <a href="./alters.html">alters</a>
+            page.</p>
+    </div>
+    <div>
+        <h2>funny links</h2>
+        <p>we're mostly active on discord: <a target="_blank"
+                href="https://discord.com/users/658650587679948820">dainfloop</a>
+            <br> you can also find us on hack club's slack: <a target="_blank"
+                href="https://hackclub.slack.com/team/U06TBP41C3E">rana(aaaaaaaaa)</a>
+        </p>
+        <p>or, if you're old school, you can contact us via email at mail (at) dainfloop (dot) is-a (dot) dev.</p>
+    </div>
+    <div id="lastfm">
+        <h1>music</h1>
+        <div class="left-right" id="lastfm">
+            <p class="lastfm-widget">
+                <strong id="music_status">loading...</strong>
+                <a id="song"></a>
+                <br>
+                <small>powered by <a href="https://github.com/biancarosa/lastfm-last-played"
+                    target="    _blank">@biancarosa/lastfm-last-played</a></small>
+            </p>
+            <img class="lastfm-cover"
+                src="https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png"
+            alt="album cover: not loaded!" title="album cover: not loaded!" />
+        </div>
+        <noscript>
+            this unfortunately is a static site, and therefore it kinda does need javascript to load this part.. which
+            you kinda disabled.
+            <br>not mad at you, it's okay to be worried about random javascript code running that you don't know. but
+            unless you enable it, no music on the site.
+            <br>if you for some reason have javascript enabled on last.fm though, you can go check out <a
+                href="https://last.fm/user/dainfloop">our profile</a> there instead
+        </noscript>
+    </div>
+
+    <script type="module">
+        const music_status = document.querySelector('#music_status')
+        const song = document.querySelector('#song')
+        const image = document.querySelector('#lastfm img')
+
+        function fetchListeningStatus() {
+            fetch('https://lastfm-last-played.biancarosa.com.br/dainfloop/latest-song')
+                .then(res => res.json())
+                .then(({ track }) => {
+                    if (track['@attr']?.nowplaying == "true") {
+                        music_status.textContent = "now listening to"
+                    } else {
+                        music_status.textContent = "last listened to"
+                    }
+
+                    song.textContent = `${track.name} - ${track.artist['#text']}`.toLowerCase()
+                    song.href = track.url
+
+                    image.src = track.image[3]['#text'] || 'https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png'
+                    image.setAttribute("title", `${track.name} - ${track.artist['#text']}`.toLowerCase())
+                    image.setAttribute("alt", `${track.name} - ${track.artist['#text']}`.toLowerCase())
+                })
+        }
+
+        fetchListeningStatus()
+    </script>
+    <footer>
+        &copy; 2025 DaInfLoop. This website is licensed under the <a href="license.html">MIT License</a>.
+    </footer>
+</body>
+
+</html>
