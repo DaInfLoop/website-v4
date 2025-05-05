@@ -49,7 +49,7 @@ hr {
 }
 
 footer {
-    position: fixed;
+    position: absolute;
     bottom: 48px;
 }
 
