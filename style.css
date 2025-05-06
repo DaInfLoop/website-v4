@@ -11,12 +11,12 @@ body {
     margin: auto;
     padding: 48px;
     gap: 16px;
+    margin-bottom: 48px;
 }
 
 .left-right {
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
 }
 
 body * * {
@@ -49,8 +49,13 @@ hr {
 }
 
 footer {
-    position: static;
-    bottom: 48px;
+    position: fixed;
+    bottom: 0px;
+    background-color: rgb(216, 216, 216);
+    padding: 24px 48px;
+    width: 100%;
+    border-top: 1px solid black;
+    left: 0px;
 }
 
 .break-line {
